@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analyzer</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            transition: 0.3s;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background: #111827;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            color: #38bdf8;
+            margin-bottom: 30px;
+        }
+
+        .nav {
+            display: block;
+            margin: 15px 0;
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .nav:hover {
+            opacity: 1;
+            color: #38bdf8;
+            transform: translateX(5px);
+        }
+
+        /* Main */
+        .main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 650px;
+            padding: 30px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            opacity: 0.6;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        label {
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+
+        input[type="file"], textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            border: none;
+            font-size: 14px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #38bdf8;
+            border: none;
+            color: black;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #0ea5e9;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>AI Recruiter</h2>
+
+    <a href="/" class="nav">🏠 Dashboard</a>
+    <a href="/roles" class="nav">💼 Job Roles</a>
+    <a href="/settings" class="nav">⚙ Settings</a>
+</div>
+
+<!-- Main -->
+<div class="main">
+
+    <div class="card">
+
+        <h1>Resume Analyzer</h1>
+        <p class="tagline">AI-powered skill detection & job role prediction</p>
+
+        <!-- PDF Upload -->
+        <form action="/analyze_pdf" method="POST" enctype="multipart/form-data">
+            <label>📄 Upload Resume (PDF)</label>
+            <input type="file" name="resume_pdf" accept="application/pdf" required>
+            <button type="submit">Analyze PDF Resume</button>
+        </form>
+
+        <hr style="margin:20px 0; opacity:0.2;">
+
+        <!-- Text Input -->
+        <form action="/analyze" method="POST">
+            <label>OR Paste Resume Text</label>
+            <textarea name="resume" placeholder="Paste resume text here..."></textarea>
+            <button type="submit">Analyze Text Resume</button>
+        </form>
+
+    </div>
+
+</div>
+
+<!-- 🌙 THEME SCRIPT (IMPORTANT) -->
+<script>
+function applyTheme() {
+    let theme = localStorage.getItem("theme");
+
+    if (theme === "dark") {
+        document.body.style.background = "#0f172a";
+        document.body.style.color = "white";
+    } else {
+        document.body.style.background = "white";
+        document.body.style.color = "black";
+    }
+}
+
+applyTheme();
+</script>
+
+</body>
+</html>

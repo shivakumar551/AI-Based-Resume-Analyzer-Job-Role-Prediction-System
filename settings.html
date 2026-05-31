@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Settings</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            padding: 40px;
+            transition: 0.3s;
+        }
+
+        h1 {
+            color: #38bdf8;
+        }
+
+        .card {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+        }
+
+        .badge {
+            background: #38bdf8;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .dark-btn {
+            background: #0f172a;
+            color: white;
+            border: 1px solid white;
+        }
+
+        .light-btn {
+            background: white;
+            color: black;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #38bdf8;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>⚙ Settings</h1>
+
+<div class="card">
+    <p>Theme Settings:</p>
+
+    <button class="dark-btn" onclick="setDark()">🌙 Dark Mode</button>
+    <button class="light-btn" onclick="setLight()">☀ Light Mode</button>
+
+    <hr style="margin:15px 0; opacity:0.2;">
+
+    <p>Model: <span class="badge">Naive Bayes</span></p>
+    <p>Version: <span class="badge">1.0</span></p>
+</div>
+
+<a href="/">⬅ Back to Dashboard</a>
+
+<!-- THEME SCRIPT -->
+<script>
+function setDark() {
+    document.body.style.background = "#0f172a";
+    document.body.style.color = "white";
+    localStorage.setItem("theme", "dark");
+}
+
+function setLight() {
+    document.body.style.background = "white";
+    document.body.style.color = "black";
+    localStorage.setItem("theme", "light");
+}
+
+// Load saved theme
+window.onload = function () {
+    let theme = localStorage.getItem("theme");
+
+    if (theme === "dark") {
+        setDark();
+    } else {
+        setLight();
+    }
+}
+</script>
+
+</body>
+</html>

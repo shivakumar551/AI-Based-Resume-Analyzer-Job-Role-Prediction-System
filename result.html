@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Resume Analysis Result</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #0f172a;
+            color: white;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1, h2, h3 {
+            color: #38bdf8;
+        }
+
+        .role {
+            font-size: 26px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .chips {
+            margin-top: 10px;
+        }
+
+        .chip {
+            display: inline-block;
+            padding: 6px 12px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+
+        .green {
+            background: #16a34a;
+        }
+
+        .red {
+            background: #dc2626;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            background: #38bdf8;
+            color: black;
+            border-radius: 10px;
+            text-decoration: none;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #0ea5e9;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .match {
+            font-size: 40px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="card center">
+        <h1>📊 AI Resume Analysis Result</h1>
+    </div>
+
+    <!-- ROLE -->
+    <div class="card">
+        <h3>🎯 Predicted Role</h3>
+        <p class="role">{{ role }}</p>
+    </div>
+
+    <!-- MATCH PERCENTAGE (FIXED) -->
+    <div class="card center">
+        <h3>📊 Skill Match Percentage</h3>
+        <div class="match">{{ match }}%</div>
+    </div>
+
+    <!-- FOUND SKILLS -->
+    <div class="card">
+        <h3>✅ Found Skills</h3>
+        <div class="chips">
+            {% for skill in skills %}
+                <span class="chip green">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- MISSING SKILLS -->
+    <div class="card">
+        <h3>❌ Missing Skills</h3>
+        <div class="chips">
+            {% for skill in missing %}
+                <span class="chip red">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div class="card center">
+        <a class="btn" href="/">← Back to Dashboard</a>
+        <a class="btn" href="/download">⬇ Download PDF</a>
+    </div>
+
+</div>
+
+</body>
+</html>
